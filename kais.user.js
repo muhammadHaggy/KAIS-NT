@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         KAIS-NT
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Simulasi isi IRS SIAK dengan jadwal semester terbaru
 // @author       You
 // @match        https://academic.ui.ac.id/*
@@ -29,7 +29,7 @@ function GM_addStyle (cssStr) {
    $(document).ready(function () {
             if (window.location.href.indexOf("main/Authentication/") > -1) {
                 $('input[type=submit]').click(function (event) {
-                    GM_setValue("login-time", performance.now())
+                    GM_setValue("login-time", Date.now())
                 });
             }
 
@@ -85,7 +85,7 @@ function GM_addStyle (cssStr) {
 
                     statusNode.css("background", "lightgreen");
 
-                    var stopTime = performance.now();
+                    var stopTime = Date.now();
                     var elapsedtime = stopTime - gblButtonClickTime;  // Milliseconds
                     var purtyElpsdTime = (elapsedtime / 1000).toFixed(3) + " seconds";
                     console.log(
