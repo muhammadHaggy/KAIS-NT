@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Pilih Jadwal
+// @name         KAIS-NT
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  try to take over the world!
+// @description  Simulasi isi IRS SIAK dengan jadwal semester terbaru
 // @author       You
 // @match        https://academic.ui.ac.id/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=atomicobject.com
