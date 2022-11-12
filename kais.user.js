@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         KAIS-NT
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @description  Simulasi isi IRS SIAK dengan jadwal semester terbaru
 // @author       You
 // @match        https://academic.ui.ac.id/*
@@ -9,6 +9,7 @@
 // @grant GM_setValue
 // @grant GM_getValue
 // @require https://code.jquery.com/jquery-3.6.1.min.js
+// @downloadURL https://github.com/muhammadHaggy/KAIS-NT/raw/master/kais.user.js
 // ==/UserScript==
 
 function GM_addStyle (cssStr) {
