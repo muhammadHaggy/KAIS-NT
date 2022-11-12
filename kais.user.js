@@ -29,7 +29,7 @@ function GM_addStyle (cssStr) {
    $(document).ready(function () {
             if (window.location.href.indexOf("main/Authentication/") > -1) {
                 $('input[type=submit]').click(function (event) {
-                    GM_setValue("login-time", Date.now())
+                    GM_setValue("login-time", performance.now())
                 });
             }
 
@@ -85,7 +85,7 @@ function GM_addStyle (cssStr) {
 
                     statusNode.css("background", "lightgreen");
 
-                    var stopTime = Date.now();
+                    var stopTime = performance.now();
                     var elapsedtime = stopTime - gblButtonClickTime;  // Milliseconds
                     var purtyElpsdTime = (elapsedtime / 1000).toFixed(3) + " seconds";
                     console.log(
