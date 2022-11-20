@@ -9,7 +9,6 @@
 // @grant GM_setValue
 // @grant GM_getValue
 // @require https://code.jquery.com/jquery-3.6.1.min.js
-// @downloadURL https://github.com/muhammadHaggy/KAIS-NT/raw/master/kais.user.js
 // ==/UserScript==
 
 function GM_addStyle(cssStr) {
@@ -138,7 +137,7 @@ function simulasi_web_sibuk() {
 ` );
         }
     });
-    if (Math.random > 0.6) {
+    if (Math.random > 0.4) {
         simulasi_web_sibuk();
     }
 
