@@ -68,6 +68,9 @@ function simulasi_web_sibuk() {
                 $("#t_h").css("background", `url(https://upload.wikimedia.org/wikipedia/commons/b/b9/Solid_red.png) top left no-repeat`);
                 $("#t_h .w0").css("background", `url(https://upload.wikimedia.org/wikipedia/commons/b/b9/Solid_red.png) top right no-repeat`);
                 $("#t_h .w0 .w1").css("background", `url(https://upload.wikimedia.org/wikipedia/commons/b/b9/Solid_red.png) top repeat-x`);
+                document.getElementById("m_b1").innerHTML = `<div class="rinfo" style="border-right:0;border-left:0;text-align: center;">
+            Selalu login ulang<br>untuk mengambil data terbaru
+        </div>` + document.getElementById("m_b1").innerHTML
             }
 
             $('a[href="../CoursePlan/CoursePlanEdit"]').attr('href', '../Schedule/Index');
@@ -112,7 +115,7 @@ function simulasi_web_sibuk() {
     </div></td></tr>`);
 
 
-                
+
 
 
 
