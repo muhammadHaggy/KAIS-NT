@@ -137,7 +137,7 @@ function simulasi_web_sibuk() {
 ` );
         }
     });
-    if (Math.random > 0.4) {
+    if (Math.random() > 0.6) {
         simulasi_web_sibuk();
     }
 
