@@ -46,53 +46,62 @@ function simulasi_web_sibuk() {
 (function main() {
     'use strict';
     // Your code here...
-    var count = 0;
-    $(document).ready(function () {
-        
-
-        if (window.location.href.indexOf("main/Authentication/") > -1) {
-            $('input[type=submit]').click(function (event) {
-                GM_setValue("login-time", Date.now());
-                
-            });
-        }
-
-        $('a[href="../CoursePlan/CoursePlanEdit"]').attr('href', '../Schedule/Index');
-        $(".w1 h1").html("KAIS<em>NT</em>");
+    if (GM_getValue("crash-chance", -1) < 0) {
+        GM_setValue("crash-chance", 0.9);
+    }
+    GM_setValue("crash-chance", GM_getValue("crash-chance", 0) - Math.random() * 1 / 15);
+    if (GM_getValue("crash-chance", 99) < 0.6) {
+        simulasi_web_sibuk();
+    } else {
+        var count = 0;
+        $(document).ready(function () {
 
 
-        if (window.location.href.indexOf("main/Schedule/Index") > -1) {
-            $('.ri').remove();
-            $('tbody tr').each(function (index, element) {
-                var attr = $(element).attr('class');
+            if (window.location.href.indexOf("main/Authentication/") > -1) {
+                $('input[type=submit]').click(function (event) {
+                    GM_setValue("login-time", Date.now());
 
-                // For some browsers, `attr` is undefined; for others,
-                // `attr` is false.  Check for both.
-                if (typeof attr !== 'undefined' && attr !== false) {
-                    // ...
-                    element.innerHTML = `<td class="ri"><input type="radio" name=radio${count}></td>` + element.innerHTML;
+                });
 
-                } else {
-                    count = count + 1;
+                $('#left div:nth-child(3) h3:nth-child(1)').html("Selalu login ulang untuk load data siak terbaru!")
+            }
+
+            $('a[href="../CoursePlan/CoursePlanEdit"]').attr('href', '../Schedule/Index');
+            $(".w1 h1").html("KAIS<em>NT</em>");
 
 
-                }
-            });
-            $('.box:last-child').remove();
-            $('h3:last-child').remove();
-            $('.box:last-child').remove();
-            $('h3:last-child').remove();
-            $(".tab").remove();
-            $("td h3").remove();
-            $(".box tbody tr:first-child").remove();
+            if (window.location.href.indexOf("main/Schedule/Index") > -1) {
+                $('.ri').remove();
+                $('tbody tr').each(function (index, element) {
+                    var attr = $(element).attr('class');
 
-            $("#ti_h").each(function (index, element) {
-                element.innerHTML = "Pengisian IRS (Simulasi CUK)"
-            });
-            $("fieldset").remove();
-            $("form").remove();
-            $(".toolbar").remove();
-            $('.box tbody').append(`<tr><td align="center" colspan="8"><div id="tmStopWatchBlck">
+                    // For some browsers, `attr` is undefined; for others,
+                    // `attr` is false.  Check for both.
+                    if (typeof attr !== 'undefined' && attr !== false) {
+                        // ...
+                        element.innerHTML = `<td class="ri"><input type="radio" name=radio${count}></td>` + element.innerHTML;
+
+                    } else {
+                        count = count + 1;
+
+
+                    }
+                });
+                $('.box:last-child').remove();
+                $('h3:last-child').remove();
+                $('.box:last-child').remove();
+                $('h3:last-child').remove();
+                $(".tab").remove();
+                $("td h3").remove();
+                $(".box tbody tr:first-child").remove();
+
+                $("#ti_h").each(function (index, element) {
+                    element.innerHTML = "Pengisian IRS (Simulasi CUK)"
+                });
+                $("fieldset").remove();
+                $("form").remove();
+                $(".toolbar").remove();
+                $('.box tbody').append(`<tr><td align="center" colspan="8"><div id="tmStopWatchBlck">
         <button id="tmStopWatchBttn">Simpan IRS</button>
         <span id="tmTimeStat">&nbsp;</span>
         <span>Waktu dihitung dari login</span>
@@ -101,31 +110,31 @@ function simulasi_web_sibuk() {
 
 
 
-            var gblButtonClickTime = GM_getValue("login-time");
-            console.log(gblButtonClickTime);
+                var gblButtonClickTime = GM_getValue("login-time");
+                console.log(gblButtonClickTime);
 
 
-            $("#tmStopWatchBttn").click(zEvent => {
-                var statusNode = $("#tmTimeStat");
-                var tmrButton = $(zEvent.target);
+                $("#tmStopWatchBttn").click(zEvent => {
+                    var statusNode = $("#tmTimeStat");
+                    var tmrButton = $(zEvent.target);
 
 
-                //-- Stop the timer
+                    //-- Stop the timer
 
-                statusNode.css("background", "lightgreen");
+                    statusNode.css("background", "lightgreen");
 
-                var stopTime = Date.now();
-                var elapsedtime = stopTime - gblButtonClickTime;  // Milliseconds
-                var purtyElpsdTime = (elapsedtime / 1000).toFixed(3) + " seconds";
-                console.log(
-                    "Timer stopped at: ", stopTime.toFixed(0), new Date(),
-                    "Elapsed: ", purtyElpsdTime
-                );
-                statusNode.text(purtyElpsdTime);
+                    var stopTime = Date.now();
+                    var elapsedtime = stopTime - gblButtonClickTime;  // Milliseconds
+                    var purtyElpsdTime = (elapsedtime / 1000).toFixed(3) + " seconds";
+                    console.log(
+                        "Timer stopped at: ", stopTime.toFixed(0), new Date(),
+                        "Elapsed: ", purtyElpsdTime
+                    );
+                    statusNode.text(purtyElpsdTime);
 
-            });
+                });
 
-            GM_addStyle(`
+                GM_addStyle(`
                     #tmStopWatchBttn {
                         font-size: 1.2em;
                         padding: 0.5ex 1em;
@@ -138,15 +147,9 @@ function simulasi_web_sibuk() {
                         border-radius: 0.5ex;
                     }
 ` );
-        }
-    });
+            }
+        });
 
-    if (GM_getValue("crash-chance", -1) < 0){
-        GM_setValue("crash-chance", 0.9);
-    }
-    GM_setValue("crash-chance", GM_getValue("crash-chance", 0) - Math.random() * 1/15);
-    if (GM_getValue("crash-chance", 99) < 0.6) {
-        simulasi_web_sibuk();
     }
 
 
