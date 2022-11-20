@@ -47,10 +47,12 @@ function simulasi_web_sibuk() {
     // Your code here...
     var count = 0;
     $(document).ready(function () {
+        
 
         if (window.location.href.indexOf("main/Authentication/") > -1) {
             $('input[type=submit]').click(function (event) {
-                GM_setValue("login-time", Date.now())
+                GM_setValue("login-time", Date.now());
+                
             });
         }
 
@@ -137,7 +139,12 @@ function simulasi_web_sibuk() {
 ` );
         }
     });
-    if (Math.random() > 0.6) {
+
+    if (GM_getValue("crash-chance", -1) < 0){
+        GM_setValue("crash-chance", 0.9);
+    }
+    GM_setValue("crash-chance", GM_getValue("crash-chance", 0) - Math.random() * 1/15);
+    if (GM_getValue("crash-chance", 99) < 0.6) {
         simulasi_web_sibuk();
     }
 
