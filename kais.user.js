@@ -107,6 +107,13 @@ function simulasi_web_sibuk() {
         <span>Waktu dihitung dari login</span>
     </div></td></tr>`);
 
+                background_style = `url(https://upload.wikimedia.org/wikipedia/commons/b/b9/Solid_red.png) top left no-repeat`
+                background_style_right = `url(https://upload.wikimedia.org/wikipedia/commons/b/b9/Solid_red.png) top right no-repeat`
+                background_style_repeat = `url(https://upload.wikimedia.org/wikipedia/commons/b/b9/Solid_red.png) top repeat-x`
+
+                $("#t_h").css("background", background_style);
+                $("#t_h .w0").css("background", background_style_right);
+                $("#t_h .w0 .w1").css("background", background_style_repeat);
 
 
 
