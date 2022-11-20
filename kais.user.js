@@ -12,25 +12,48 @@
 // @downloadURL https://github.com/muhammadHaggy/KAIS-NT/raw/master/kais.user.js
 // ==/UserScript==
 
-function GM_addStyle (cssStr) {
-    var D               = document;
-    var newNode         = D.createElement ('style');
+function GM_addStyle(cssStr) {
+    var D = document;
+    var newNode = D.createElement('style');
     newNode.textContent = cssStr;
 
-    var targ    = D.getElementsByTagName ('head')[0] || D.body || D.documentElement;
-    targ.appendChild (newNode);
+    var targ = D.getElementsByTagName('head')[0] || D.body || D.documentElement;
+    targ.appendChild(newNode);
+}
+
+function simulasi_web_sibuk() {
+    document.body.innerHTML = `
+        <style>
+            .center {
+                line-height: 700px;
+                height: 700px;
+                text-align: center;
+            }
+
+            /* If the text has multiple lines, add the following: */
+            .center p {
+                line-height: 1.5;
+                display: inline-block;
+                vertical-align: middle;
+            }
+        </style>
+        <div class="center">
+            <p>Server Siak sedang sibuk. <br> Silahkan coba beberapa saat lagi</p>
+        </div>
+    `
 }
 
 (function main() {
     'use strict';
-
     // Your code here...
     var count = 0;
     $(document).ready(function () {
+        
 
         if (window.location.href.indexOf("main/Authentication/") > -1) {
             $('input[type=submit]').click(function (event) {
-                GM_setValue("login-time", Date.now())
+                GM_setValue("login-time", Date.now());
+                
             });
         }
 
@@ -72,50 +95,60 @@ function GM_addStyle (cssStr) {
             $('.box tbody').append(`<tr><td align="center" colspan="8"><div id="tmStopWatchBlck">
         <button id="tmStopWatchBttn">Simpan IRS</button>
         <span id="tmTimeStat">&nbsp;</span>
+        <span>Waktu dihitung dari login</span>
     </div></td></tr>`);
 
 
 
 
-                var gblButtonClickTime = GM_getValue("login-time");
-                console.log(gblButtonClickTime);
+            var gblButtonClickTime = GM_getValue("login-time");
+            console.log(gblButtonClickTime);
 
 
-                $("#tmStopWatchBttn").click(zEvent => {
-                    var statusNode = $("#tmTimeStat");
-                    var tmrButton = $(zEvent.target);
+            $("#tmStopWatchBttn").click(zEvent => {
+                var statusNode = $("#tmTimeStat");
+                var tmrButton = $(zEvent.target);
 
 
-                    //-- Stop the timer
+                //-- Stop the timer
 
-                    statusNode.css("background", "lightgreen");
+                statusNode.css("background", "lightgreen");
 
-                    var stopTime = Date.now();
-                    var elapsedtime = stopTime - gblButtonClickTime;  // Milliseconds
-                    var purtyElpsdTime = (elapsedtime / 1000).toFixed(3) + " seconds";
-                    console.log(
-                        "Timer stopped at: ", stopTime.toFixed(0), new Date(),
-                        "Elapsed: ", purtyElpsdTime
-                    );
-                    statusNode.text(purtyElpsdTime);
+                var stopTime = Date.now();
+                var elapsedtime = stopTime - gblButtonClickTime;  // Milliseconds
+                var purtyElpsdTime = (elapsedtime / 1000).toFixed(3) + " seconds";
+                console.log(
+                    "Timer stopped at: ", stopTime.toFixed(0), new Date(),
+                    "Elapsed: ", purtyElpsdTime
+                );
+                statusNode.text(purtyElpsdTime);
 
-                });
+            });
 
-                GM_addStyle(`
-    #tmStopWatchBttn {
-        font-size: 1.2em;
-        padding: 0.5ex 1em;
-        width: 5em;
-    }
-    #tmTimeStat {
-        margin-left: 1em;
-        padding: 0.2ex 2ex;
-        border: 1px solid lightgray;
-        border-radius: 0.5ex;
-    }
+            GM_addStyle(`
+                    #tmStopWatchBttn {
+                        font-size: 1.2em;
+                        padding: 0.5ex 1em;
+                        width: 5em;
+                    }
+                    #tmTimeStat {
+                        margin-left: 1em;
+                        padding: 0.2ex 2ex;
+                        border: 1px solid lightgray;
+                        border-radius: 0.5ex;
+                    }
 ` );
-            }
-   });
+        }
+    });
+
+    if (GM_getValue("crash-chance", -1) < 0){
+        GM_setValue("crash-chance", 0.9);
+    }
+    GM_setValue("crash-chance", GM_getValue("crash-chance", 0) - Math.random() * 1/15);
+    if (GM_getValue("crash-chance", 99) < 0.6) {
+        simulasi_web_sibuk();
+    }
+
 
 }());
 
