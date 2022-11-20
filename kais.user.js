@@ -12,13 +12,13 @@
 // @downloadURL https://github.com/muhammadHaggy/KAIS-NT/raw/master/kais.user.js
 // ==/UserScript==
 
-function GM_addStyle (cssStr) {
-    var D               = document;
-    var newNode         = D.createElement ('style');
+function GM_addStyle(cssStr) {
+    var D = document;
+    var newNode = D.createElement('style');
     newNode.textContent = cssStr;
 
-    var targ    = D.getElementsByTagName ('head')[0] || D.body || D.documentElement;
-    targ.appendChild (newNode);
+    var targ = D.getElementsByTagName('head')[0] || D.body || D.documentElement;
+    targ.appendChild(newNode);
 }
 
 function simulasi_web_sibuk() {
@@ -99,31 +99,31 @@ function simulasi_web_sibuk() {
 
 
 
-                var gblButtonClickTime = GM_getValue("login-time");
-                console.log(gblButtonClickTime);
+            var gblButtonClickTime = GM_getValue("login-time");
+            console.log(gblButtonClickTime);
 
 
-                $("#tmStopWatchBttn").click(zEvent => {
-                    var statusNode = $("#tmTimeStat");
-                    var tmrButton = $(zEvent.target);
+            $("#tmStopWatchBttn").click(zEvent => {
+                var statusNode = $("#tmTimeStat");
+                var tmrButton = $(zEvent.target);
 
 
-                    //-- Stop the timer
+                //-- Stop the timer
 
-                    statusNode.css("background", "lightgreen");
+                statusNode.css("background", "lightgreen");
 
-                    var stopTime = Date.now();
-                    var elapsedtime = stopTime - gblButtonClickTime;  // Milliseconds
-                    var purtyElpsdTime = (elapsedtime / 1000).toFixed(3) + " seconds";
-                    console.log(
-                        "Timer stopped at: ", stopTime.toFixed(0), new Date(),
-                        "Elapsed: ", purtyElpsdTime
-                    );
-                    statusNode.text(purtyElpsdTime);
+                var stopTime = Date.now();
+                var elapsedtime = stopTime - gblButtonClickTime;  // Milliseconds
+                var purtyElpsdTime = (elapsedtime / 1000).toFixed(3) + " seconds";
+                console.log(
+                    "Timer stopped at: ", stopTime.toFixed(0), new Date(),
+                    "Elapsed: ", purtyElpsdTime
+                );
+                statusNode.text(purtyElpsdTime);
 
-                });
+            });
 
-                GM_addStyle(`
+            GM_addStyle(`
                     #tmStopWatchBttn {
                         font-size: 1.2em;
                         padding: 0.5ex 1em;
@@ -136,10 +136,11 @@ function simulasi_web_sibuk() {
                         border-radius: 0.5ex;
                     }
 ` );
-            }
-   });
-
-   simulasi_web_sibuk();
+        }
+    });
+    if (Math.random > 0.6) {
+        simulasi_web_sibuk();
+    }
 
 
 }());
