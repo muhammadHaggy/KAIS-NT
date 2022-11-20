@@ -21,9 +21,30 @@ function GM_addStyle (cssStr) {
     targ.appendChild (newNode);
 }
 
+function simulasi_web_sibuk() {
+    document.body.innerHTML = `
+        <style>
+            .center {
+                line-height: 700px;
+                height: 700px;
+                text-align: center;
+            }
+
+            /* If the text has multiple lines, add the following: */
+            .center p {
+                line-height: 1.5;
+                display: inline-block;
+                vertical-align: middle;
+            }
+        </style>
+        <div class="center">
+            <p>Server Siak sedang sibuk. <br> Silahkan coba beberapa saat lagi</p>
+        </div>
+    `
+}
+
 (function main() {
     'use strict';
-
     // Your code here...
     var count = 0;
     $(document).ready(function () {
@@ -72,6 +93,7 @@ function GM_addStyle (cssStr) {
             $('.box tbody').append(`<tr><td align="center" colspan="8"><div id="tmStopWatchBlck">
         <button id="tmStopWatchBttn">Simpan IRS</button>
         <span id="tmTimeStat">&nbsp;</span>
+        <span>Waktu dihitung dari login</span>
     </div></td></tr>`);
 
 
@@ -102,20 +124,23 @@ function GM_addStyle (cssStr) {
                 });
 
                 GM_addStyle(`
-    #tmStopWatchBttn {
-        font-size: 1.2em;
-        padding: 0.5ex 1em;
-        width: 5em;
-    }
-    #tmTimeStat {
-        margin-left: 1em;
-        padding: 0.2ex 2ex;
-        border: 1px solid lightgray;
-        border-radius: 0.5ex;
-    }
+                    #tmStopWatchBttn {
+                        font-size: 1.2em;
+                        padding: 0.5ex 1em;
+                        width: 5em;
+                    }
+                    #tmTimeStat {
+                        margin-left: 1em;
+                        padding: 0.2ex 2ex;
+                        border: 1px solid lightgray;
+                        border-radius: 0.5ex;
+                    }
 ` );
             }
    });
+
+   simulasi_web_sibuk();
+
 
 }());
 
