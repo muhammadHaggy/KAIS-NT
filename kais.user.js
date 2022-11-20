@@ -64,6 +64,10 @@ function simulasi_web_sibuk() {
                 });
 
                 $('#left div:nth-child(3) h3:nth-child(1)').html("Selalu login ulang untuk load data siak terbaru!")
+            } else {
+                $("#t_h").css("background", `url(https://upload.wikimedia.org/wikipedia/commons/b/b9/Solid_red.png) top left no-repeat`);
+                $("#t_h .w0").css("background", `url(https://upload.wikimedia.org/wikipedia/commons/b/b9/Solid_red.png) top right no-repeat`);
+                $("#t_h .w0 .w1").css("background", `url(https://upload.wikimedia.org/wikipedia/commons/b/b9/Solid_red.png) top repeat-x`);
             }
 
             $('a[href="../CoursePlan/CoursePlanEdit"]').attr('href', '../Schedule/Index');
@@ -108,9 +112,7 @@ function simulasi_web_sibuk() {
     </div></td></tr>`);
 
 
-                $("#t_h").css("background", `url(https://upload.wikimedia.org/wikipedia/commons/b/b9/Solid_red.png) top left no-repeat`);
-                $("#t_h .w0").css("background", `url(https://upload.wikimedia.org/wikipedia/commons/b/b9/Solid_red.png) top right no-repeat`);
-                $("#t_h .w0 .w1").css("background", `url(https://upload.wikimedia.org/wikipedia/commons/b/b9/Solid_red.png) top repeat-x`);
+                
 
 
 
