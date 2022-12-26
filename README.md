@@ -1,6 +1,6 @@
 # KAIS-NT
 
-<img src="https://github.com/muhammadHaggy/KAIS-NT/raw/master/Screen_Recording_2022-12-26_at_11_29_04_AdobeExpress.gif" width="400" height="300" />
+https://github.com/muhammadHaggy/KAIS-NT/raw/master/Screen%20Recording%202022-12-26%20at%2011.29.04.mp4
 
 Siak war simulation with timer to measure user speed in filling out IRS, computed from login time.
 For more realistic siak war simulation, the script has random chance of displaying server sibuk that gradually decreases over time and reset when the chance of crashing below zero.
