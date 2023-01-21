@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         KAIS-NT
 // @namespace    http://tampermonkey.net/
-// @version      0.6
+// @version      0.7
 // @description  Simulasi isi IRS SIAK dengan jadwal semester terbaru
 // @author       You
 // @match        https://academic.ui.ac.id/*
@@ -73,7 +73,7 @@ function simulasi_web_sibuk() {
         </div>` + document.getElementById("m_b1").innerHTML
             }
 
-            $('a[href="../CoursePlan/CoursePlanEdit"]').attr('href', '../Schedule/Index');
+            $('a[href="../CoursePlan/CoursePlanEdit"]').attr('href', '../Schedule/Index?period=2022-2');
             $(".w1 h1").html("KAIS<em>NT</em>");
 
 
