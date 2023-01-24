@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         KAIS-NT
 // @namespace    http://tampermonkey.net/
-// @version      0.7
+// @version      0.8
 // @description  Simulasi isi IRS SIAK dengan jadwal semester terbaru
 // @author       You
 // @match        https://academic.ui.ac.id/*
@@ -9,7 +9,6 @@
 // @grant GM_setValue
 // @grant GM_getValue
 // @require https://code.jquery.com/jquery-3.6.1.min.js
-// @downloadURL https://github.com/muhammadHaggy/KAIS-NT/raw/master/kais.user.js
 // ==/UserScript==
 
 function GM_addStyle(cssStr) {
@@ -94,10 +93,6 @@ function simulasi_web_sibuk() {
 
                     }
                 });
-                $('.box:last-child').remove();
-                $('h3:last-child').remove();
-                $('.box:last-child').remove();
-                $('h3:last-child').remove();
                 $(".tab").remove();
                 $("td h3").remove();
                 $(".box tbody tr:first-child").remove();
@@ -108,11 +103,13 @@ function simulasi_web_sibuk() {
                 $("fieldset").remove();
                 $("form").remove();
                 $(".toolbar").remove();
-                $('.box tbody').append(`<tr><td align="center" colspan="8"><div id="tmStopWatchBlck">
+                $('.box:last-child tbody').append(`<tr><td align="center" colspan="8"><div id="tmStopWatchBlck">
         <button id="tmStopWatchBttn">Simpan IRS</button>
         <span id="tmTimeStat">&nbsp;</span>
         <span>Waktu dihitung dari login</span>
     </div></td></tr>`);
+
+                $("table.box").css("width", "100%");
 
 
 
