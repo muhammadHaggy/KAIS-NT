@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         KAIS-NT
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      2.0
 // @description  Simulasi isi IRS SIAK dengan jadwal semester terbaru
 // @author       You
 // @match        https://academic.ui.ac.id/*
@@ -116,29 +116,24 @@ function simulasi_web_sibuk() {
 
 
 
-                var gblButtonClickTime = GM_getValue("login-time");
-                console.log(gblButtonClickTime);
+                var startTime = Date.now();
 
+        $("#tmStopWatchBttn").click(zEvent => {
+            var statusNode = $("#tmTimeStat");
+            var tmrButton = $(zEvent.target);
 
-                $("#tmStopWatchBttn").click(zEvent => {
-                    var statusNode = $("#tmTimeStat");
-                    var tmrButton = $(zEvent.target);
+            //-- Stop the timer
+            statusNode.css("background", "lightgreen");
 
-
-                    //-- Stop the timer
-
-                    statusNode.css("background", "lightgreen");
-
-                    var stopTime = Date.now();
-                    var elapsedtime = stopTime - gblButtonClickTime;  // Milliseconds
-                    var purtyElpsdTime = (elapsedtime / 1000).toFixed(3) + " seconds";
-                    console.log(
-                        "Timer stopped at: ", stopTime.toFixed(0), new Date(),
-                        "Elapsed: ", purtyElpsdTime
-                    );
-                    statusNode.text(purtyElpsdTime);
-
-                });
+            var stopTime = Date.now();
+            var elapsedtime = stopTime - startTime;  // Milliseconds
+            var purtyElpsdTime = (elapsedtime / 1000).toFixed(3) + " seconds";
+            console.log(
+                "Timer stopped at: ", stopTime.toFixed(0), new Date(),
+                "Elapsed: ", purtyElpsdTime
+            );
+            statusNode.text(purtyElpsdTime);
+        });
 
                 GM_addStyle(`
                     #tmStopWatchBttn {
