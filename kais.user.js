@@ -72,7 +72,7 @@ function simulasi_web_sibuk() {
         </div>` + document.getElementById("m_b1").innerHTML
             }
 
-            $('a[href="../CoursePlan/CoursePlanEdit"]').attr('href', '../Schedule/Index?period=2022-2');
+            $('a[href="../CoursePlan/CoursePlanEdit"]').attr('href', '../Schedule/Index?period=2023-1&search=');
             $(".w1 h1").html("KAIS<em>NT</em>");
 
 
